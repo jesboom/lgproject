@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+
     }
     // [END signIn]
 
@@ -261,6 +262,10 @@ public class MainActivity extends AppCompatActivity implements
         if (signedIn) {
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            Intent secondActivity = new Intent(MainActivity.this,SecondActivity.class);
+
+            startActivity(secondActivity);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
