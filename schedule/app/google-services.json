@@ -1,33 +1,27 @@
 {
   "project_info": {
-    "project_number": "1046328695425",
-    "project_id": "poetic-world-172808"
+    "project_number": "629426443447",
+    "firebase_url": "https://voteandchat-426c1.firebaseio.com",
+    "project_id": "voteandchat-426c1",
+    "storage_bucket": "voteandchat-426c1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1046328695425:android:7c15494a2a15930d",
+        "mobilesdk_app_id": "1:629426443447:android:7c15494a2a15930d",
         "android_client_info": {
           "package_name": "org.androidtown.schedule"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1046328695425-2g78ac831mt33vpejfo37odlt5dnava7.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "org.androidtown.schedule",
-            "certificate_hash": "359ac3026d0a460164103958b3334b35408975f3"
-          }
-        },
-        {
-          "client_id": "1046328695425-klud8l70dnn0g7ukmplmgfkbi54c14pu.apps.googleusercontent.com",
+          "client_id": "629426443447-nmis2oqovlmd11av144ao8ddqdsri9f8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAlEBKtxf_6CtW910Hz-FGU5lUxab7iNDA"
+          "current_key": "AIzaSyCjUqKCqAsKe2_SfoI2e_UibzqGURGxuXo"
         }
       ],
       "services": {
@@ -39,7 +33,7 @@
           "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
