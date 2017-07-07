@@ -1,9 +1,12 @@
 package org.androidtown.schedule;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,78 +22,32 @@ import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity
 {
-
-    private String userName ;
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> listItems=new ArrayList<String>();
-    private EditText editText;
+    private String id;
+    private Button myCalandal_button;
+    private Button group_Calandal_button;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.second_activity);
+        setContentView(R.layout.activity_second);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
 
-        ListView listView = (ListView) findViewById(R.id.listView);
-        editText = (EditText) findViewById(R.id.editText);
-        Button sendButton = (Button) findViewById(R.id.button);
+        myCalandal_button= (Button) findViewById(R.id.mycalandal_button);
+        group_Calandal_button = (Button) findViewById(R.id.group_calandal_button);
 
-        userName = "user" + new Random().nextInt(10000);
-
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1);
-
-        listView.setAdapter( adapter);
-
-
-        sendButton.setOnClickListener(new View.OnClickListener(){
+        myCalandal_button.setText(id);
+        group_Calandal_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                ChatData chatData = new ChatData(userName, editText.getText().toString(),10);  // 유저 이름과 메세지로 chatData 만들기
-
-                User userData = new User();
-                M1 m1 = new M1("1","2","123");
-
-                Calander calander = new Calander(m1);
-                Groups groups = new Groups(true);
-                User user = new User("idd","nananma",groups,calander);
-                Users users = new Users(user);
-
-                //databaseReference.child("message").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
-                databaseReference.child("message").push().setValue(users);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
-
-                editText.setText("");
+            public void onClick(View view) {
+                Intent test_activity_intent = new Intent(SecondActivity.this,Test_Activity.class); ;
+                startActivity(test_activity_intent);
             }
         });
 
-        databaseReference.child("message").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
-                //adapter.add(chatData.getUserName()+":"+chatData.getMessage());
-            }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
 
     }
-
 }
