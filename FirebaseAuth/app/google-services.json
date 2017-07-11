@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "629426443447",
-    "firebase_url": "https://voteandchat-426c1.firebaseio.com",
-    "project_id": "voteandchat-426c1",
-    "storage_bucket": "voteandchat-426c1.appspot.com"
+    "project_number": "975727938594",
+    "firebase_url": "https://myfirebaseauthapp-a0f1c.firebaseio.com",
+    "project_id": "myfirebaseauthapp-a0f1c",
+    "storage_bucket": "myfirebaseauthapp-a0f1c.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:629426443447:android:7c15494a2a15930d",
+        "mobilesdk_app_id": "1:975727938594:android:de82d03ffc3ed9e6",
         "android_client_info": {
-          "package_name": "org.androidtown.schedule"
+          "package_name": "org.androidtown.firebaseauth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "629426443447-nmis2oqovlmd11av144ao8ddqdsri9f8.apps.googleusercontent.com",
+          "client_id": "975727938594-osm9m244g4mq7f9ltc4tvhqmm3p58cmq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCjUqKCqAsKe2_SfoI2e_UibzqGURGxuXo"
+          "current_key": "AIzaSyDvurQyqywdWgxGfom2U94EI4WGKEQszwY"
         }
       ],
       "services": {
