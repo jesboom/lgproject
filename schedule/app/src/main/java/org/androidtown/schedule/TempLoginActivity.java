@@ -154,8 +154,7 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderManage
     @Override
     protected void onPause() {
         super.onPause();
-        Intent secondActivity_Intent = new Intent(TempLoginActivity.this,SecondActivity.class);
-        startActivity(secondActivity_Intent);
+
     }
 
     private void populateAutoComplete() {
@@ -309,6 +308,12 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderManage
 
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+
+
+            Intent secondActivity_Intent = new Intent(TempLoginActivity.this,SecondActivity.class);
+            secondActivity_Intent.putExtra("id",mEmailView.getText().toString());
+            startActivity(secondActivity_Intent);
+
         }
     }
 

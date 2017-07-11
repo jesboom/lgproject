@@ -28,6 +28,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+<<<<<<< HEAD
+=======
+    //compile 'com.google.firebase:firebase-auth:10.0.1'
+>>>>>>> dce4806f4d4329e022dff8cbba011a7bb395bc25
 
 //dependency for google sign in
     //compile 'com.google.android.gms:play-services-auth:11.0.1'
@@ -57,6 +61,7 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
 }
+
 
 
 
