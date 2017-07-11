@@ -1,21 +1,26 @@
 package org.androidtown.schedule;
+
+import java.util.ArrayList;
+
 /**
  * Created by ohji1 on 2017-07-06.
  */
 
 public class Users
 {
-    private User user;
 
-    public Users(User user) {
-        this.user = user;
+    private ArrayList<User> users= new ArrayList<User>();
+
+    public Users(){};
+    public Users(ArrayList<User> users) {
+        this.users = users;
     }
 
-    public User getUser() {
-        return user;
+    public ArrayList<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
     }
 }

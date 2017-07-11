@@ -5,18 +5,19 @@ package org.androidtown.schedule;
 
 public class Groups
 {
-    private Boolean group_name;
+    private Boolean g;
 
     public Groups(){};
-    public Groups(Boolean group_name) {
-        this.group_name = group_name;
+
+    public Groups(Boolean g) {
+        this.g = g;
     }
 
-    public Boolean getGroup_name() {
-        return group_name;
+    public Boolean getG() {
+        return g;
     }
 
-    public void setGroup_name(Boolean group_name) {
-        this.group_name = group_name;
+    public void setG(Boolean g) {
+        this.g = g;
     }
 }

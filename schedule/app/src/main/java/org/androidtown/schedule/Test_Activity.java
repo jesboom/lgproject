@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -55,23 +56,26 @@ public class Test_Activity extends AppCompatActivity
                 User userData = new User();
                 M1 m1 = new M1("1","2","123");
 
-                Calander calander = new Calander(m1);
+               // Schedule schedule = new Schedule("fad");
                 Groups groups = new Groups(true);
-                User user = new User("idd","nananma",groups,calander);
-                Users users = new Users(user);
+              //  User user = new User("idd",groups,schedule);
+                ArrayList<User> users_Arrya = new ArrayList<User>();
+             //   users_Arrya.add(user);
+
+                Users users = new Users(users_Arrya);
 
                 //databaseReference.child("message").push().setValue(chatData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
-                databaseReference.child("message").push().setValue(users);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
+              //  databaseReference.child("message").child("TTTTTT").setValue(users);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
 
                 editText.setText("");
             }
         });
-
+    /*
         databaseReference.child("message").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
-                //adapter.add(chatData.getUserName()+":"+chatData.getMessage());
+                ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
+                adapter.add(chatData.getUserName()+":"+chatData.getMessage());
             }
 
             @Override
@@ -90,7 +94,48 @@ public class Test_Activity extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    */
+        databaseReference.child("Users").child("ohji1006@").child("groups").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               // Users users = dataSnapshot.getValue(Users.class);  // chatData를 가져오고
+               // adapter.add(users.getUsers() + ":");
+                for(DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    adapter.add(snapshot.getKey() + ":" + snapshot.getValue());
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        /*
+        databaseReference.child("message").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Users users = dataSnapshot.getValue(Users.class);  // chatData를 가져오고
+                adapter.add(users.getUsers() + ":");
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        */
     }
 
 }

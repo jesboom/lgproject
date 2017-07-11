@@ -5,25 +5,24 @@ package org.androidtown.schedule;
 
 public class User
 {
-    private String id;
     private String name;
     private Groups groups;
-    private Calander calander;
+    private Schedule schedule;
 
     public User(){};
-    public User(String id, String name, Groups groups, Calander calander) {
-        this.id = id;
+
+    public User(String name, Groups groups, Schedule schedule) {
         this.name = name;
         this.groups = groups;
-        this.calander = calander;
+        this.schedule = schedule;
     }
 
-    public String getId() {
-        return id;
+    public Schedule getSchedule() {
+        return schedule;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 
     public String getName() {
@@ -42,11 +41,5 @@ public class User
         this.groups = groups;
     }
 
-    public Calander getCalander() {
-        return calander;
-    }
 
-    public void setCalander(Calander calander) {
-        this.calander = calander;
-    }
 }

@@ -23,8 +23,12 @@ import java.util.Random;
 public class SecondActivity extends AppCompatActivity
 {
     private String id;
+    private String userName;
     private Button myCalandal_button;
     private Button group_Calandal_button;
+    private Button id_setting_button;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,12 +37,20 @@ public class SecondActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
-
+        userName = "user" + new Random().nextInt(10000);
 
         myCalandal_button= (Button) findViewById(R.id.mycalandal_button);
         group_Calandal_button = (Button) findViewById(R.id.group_calandal_button);
+        id_setting_button= (Button) findViewById(R.id.id_setting_button);
 
         myCalandal_button.setText(id);
+
+        myCalandal_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         group_Calandal_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,6 +58,20 @@ public class SecondActivity extends AppCompatActivity
                 startActivity(test_activity_intent);
             }
         });
+        id_setting_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent setting_activity_intent = new Intent(SecondActivity.this,SettingActivity.class);
+                setting_activity_intent.putExtra("id",id);
+                startActivity(setting_activity_intent);
+            }
+        });
+
+        //Schedule schedule = new Schedule()
+        Groups groups = new Groups(true);
+      //  User user = new User(userName,groups,schedule);
+
+        //databaseReference.child("Users").child(id).setValue(user);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
 
 
 
