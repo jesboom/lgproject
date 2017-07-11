@@ -26,13 +26,8 @@
         <activity
             android:name=".SecondActivity"
             android:label="@string/title_activity_temp_login" />
-<<<<<<< HEAD
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_temp_login" />
-        <activity android:name=".Test_Activity"></activity>
+
         <activity android:name=".SettingActivity"></activity>
-=======
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_temp_login" />
@@ -41,9 +36,7 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_temp_login"/>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_temp_login"></activity>
+
         <activity
             android:name=".Test_Activity">
         </activity>
