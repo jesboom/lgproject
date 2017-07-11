@@ -3,32 +3,33 @@ package org.androidtown.schedule;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.app.LoaderManager.LoaderCallbacks;
-
+import android.app.LoaderManager;
+import android.app.ProgressDialog;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class TempLoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>
+public class TempLoginActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, View.OnClickListener
 {
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -57,10 +58,15 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
     private UserLoginTask mAuthTask = null;
 
     // UI references.
+    private Button mEmailSignInButton;
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+   // private GoogleApiClient mGoogleApiClient;
+
+    private ProgressDialog progressDialog; //7.7.10.30
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,11 +74,22 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp_login);
         // Set up the login form.
+
+        mEmailSignInButton = (Button)findViewById(R.id.email_sign_in_button);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mPasswordView = (EditText) findViewById(R.id.password);
+
+        progressDialog = new ProgressDialog(this);
+
+        mEmailSignInButton.setOnClickListener(this);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+
+      /*  mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -82,17 +99,56 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
                 return false;
             }
         });
+*/
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
+        //mEmailSignInButton.setOnClickListener(this);
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+
+    }
+
+    private void registerUser(){
+
+        //getting email and password from edit texts
+        String email = mEmailView.getText().toString().trim();
+        String password  = mPasswordView.getText().toString().trim();
+
+        //checking if email and passwords are empty
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        //if the email and password are not empty
+        //displaying a progress dialog
+
+        progressDialog.setMessage("Registering Please Wait...");
+        progressDialog.show();
+
+        //creating a new user
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        //checking if success
+                        if(task.isSuccessful()){
+                            //display some message here
+                            Toast.makeText(TempLoginActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                        }else{
+                            //display some message here
+                            Toast.makeText(TempLoginActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
+                        }
+                        progressDialog.dismiss();
+                    }
+                });
+
     }
 
     @Override
@@ -150,6 +206,47 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+    /*
+    private void attemptLogin() {
+
+        String email = mEmailView.getText().toString().trim();
+        String password = mPasswordView.getText().toString().trim();
+
+        if(TextUtils.isEmpty(email)){
+            //email 이 비었을떄
+            Toast.makeText(this, "이메일을 입력 해 주세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(TextUtils.isEmpty(password)){
+            //password비었을떄
+            Toast.makeText(this, "비밀번호를 입력 해 주세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        progressDialog.setMessage("registering user...");
+        progressDialog.show();
+
+        firebaseAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            //사용자가 성공적으로 로그인하면
+                            //여기서 profile activity 시작
+                            //지금은 toast만 나타내게
+                            Toast.makeText(TempLoginActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            Toast.makeText(TempLoginActivity.this, "Could not register ..please try again", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        //로그인 성공시
+
+    }*/
+
+
+
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -192,6 +289,23 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+
+            firebaseAuth.createUserWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                //사용자가 성공적으로 로그인하면
+                                //여기서 profile activity 시작
+                                //지금은 toast만 나타내게
+                                Toast.makeText(TempLoginActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                            }else{
+                                Toast.makeText(TempLoginActivity.this, "Could not register ..please try again", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
 
@@ -202,6 +316,7 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
 
         }
     }
+
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
@@ -290,6 +405,16 @@ public class TempLoginActivity extends AppCompatActivity implements LoaderCallba
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mEmailSignInButton)
+        //registerUser();
+        attemptLogin();
+        //if(view == textViewSignin){
+            //will open login activity here
+       // }
     }
 
 
