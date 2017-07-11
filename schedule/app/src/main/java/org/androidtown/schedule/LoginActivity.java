@@ -49,15 +49,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         buttonSignIn.setOnClickListener(this);
         textViewSignup.setOnClickListener(this);
-
-
-
-
-
-
-
-
-
     }
 
     private void userLogin(){
@@ -94,7 +85,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         progressDialog.dismiss();
                         if(task.isSuccessful()){
                             finish();
-                            startActivity(new Intent(getApplicationContext(),SettingActivity.class));
+
+                            //Intent secondActivity_Intent = new Intent(getApplicationContext(),SecondActivity.class);
+                            //secondActivity_Intent.putExtra("id",mEmailView.getText().toString());
+
+                            startActivity(new Intent(getApplicationContext(),SecondActivity.class));
                             //start the profile activity
                         }
                     }

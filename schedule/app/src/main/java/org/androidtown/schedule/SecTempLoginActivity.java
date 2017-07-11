@@ -93,6 +93,7 @@ public class SecTempLoginActivity extends AppCompatActivity implements View.OnCl
                             //righ now let display a toast only
 
                                 finish();
+
                                 startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
 
                             Toast.makeText(SecTempLoginActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
@@ -110,7 +111,8 @@ public class SecTempLoginActivity extends AppCompatActivity implements View.OnCl
             registerUser();
         }
 
-        if(v == textViewSignin){
+        if(v == textViewSignin)
+        {
             startActivity(new Intent(this, LoginActivity.class));
         }
 
