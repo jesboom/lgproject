@@ -18,11 +18,12 @@ import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity
 {
-    private String id;
+    private String uid;
     private String userName;
     private Button myCalandal_button;
     private Button group_Calandal_button;
     private Button id_setting_button;
+    private Button logout_button;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -32,23 +33,32 @@ public class SecondActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
-        //Intent intent = getIntent();
-
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        id = user.getUid()+"";
-        //id = firebaseAuth.getCurrentUser().getUid()+"";
+        uid = user.getUid()+"";
+
         userName = "user" + new Random().nextInt(10000);
 
         myCalandal_button= (Button) findViewById(R.id.mycalandal_button);
         group_Calandal_button = (Button) findViewById(R.id.group_calandal_button);
         id_setting_button= (Button) findViewById(R.id.id_setting_button);
+        logout_button = (Button) findViewById(R.id.logout_button);
 
-        myCalandal_button.setText(id);
+        myCalandal_button.setText(uid);
 
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(SecondActivity.this, LoginActivity.class));
+            }
+        });
         myCalandal_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent my_calendar_intent = new Intent(SecondActivity.this,My_Calendar_Activity.class); ;
+                my_calendar_intent.putExtra("id",uid);
+                startActivity(my_calendar_intent);
             }
         });
         group_Calandal_button.setOnClickListener(new View.OnClickListener() {
@@ -62,18 +72,10 @@ public class SecondActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent setting_activity_intent = new Intent(SecondActivity.this,SettingActivity.class);
-                setting_activity_intent.putExtra("id",id);
+                setting_activity_intent.putExtra("id",uid);
                 startActivity(setting_activity_intent);
             }
         });
-
-        //Schedule schedule = new Schedule()
         Groups groups = new Groups(true);
-      //  User user = new User(userName,groups,schedule);
-
-        //databaseReference.child("Users").child(id).setValue(user);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
-
-
-
     }
 }

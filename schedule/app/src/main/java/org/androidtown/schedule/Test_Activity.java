@@ -25,7 +25,7 @@ public class Test_Activity extends AppCompatActivity
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private ArrayAdapter<String> adapter;
-    private ArrayList<String> listItems=new ArrayList<String>();
+    private ArrayList<String> listItems = new ArrayList<String>();
     private EditText editText;
 
     @Override
@@ -95,17 +95,16 @@ public class Test_Activity extends AppCompatActivity
             }
         });
     */
-        databaseReference.child("Users").child("ohji1006@").child("groups").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Users").child("ohji1006@").child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                // Users users = dataSnapshot.getValue(Users.class);  // chatData를 가져오고
                // adapter.add(users.getUsers() + ":");
-                for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
-                    adapter.add(snapshot.getKey() + ":" + snapshot.getValue());
-                }
+             //   for(DataSnapshot snapshot : dataSnapshot.getChildren())
+             //   {
+                    adapter.add(dataSnapshot.getKey() + ":" + dataSnapshot.getValue());
+             //   }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

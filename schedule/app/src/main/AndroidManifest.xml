@@ -22,26 +22,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SecondActivity"
             android:label="@string/title_activity_temp_login" />
-
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".SettingActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_temp_login" />
-
         <activity android:name=".SecTempLoginActivity" />
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/title_activity_temp_login"/>
-
-        <activity
-            android:name=".Test_Activity">
-        </activity>
-
-
+            android:label="@string/title_activity_temp_login" />
+        <activity android:name=".Test_Activity" />
+        <activity android:name=".My_Calendar_Activity" />
+        <activity android:name=".My_Calendar_Selected_Day_Shedule"></activity>
     </application>
 
 </manifest>

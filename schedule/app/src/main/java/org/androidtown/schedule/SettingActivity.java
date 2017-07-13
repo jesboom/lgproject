@@ -110,7 +110,7 @@ public class SettingActivity extends AppCompatActivity
                     Toast toast2 = Toast.makeText(SettingActivity.this,"title: " + shedule_title + ", body: " + shedule_body ,Toast.LENGTH_SHORT);
                     toast2.show();
 
-                    Schedule schedule = new Schedule(shedule_body, year,month+1, day);
+                    Schedule schedule = new Schedule(shedule_body, year,month, day);
                     databaseReference.child("Users").child(id).child("schedule").child(shedule_body).setValue(schedule);
 
                 }
