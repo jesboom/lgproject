@@ -50,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
 
-        textViewUserEmail.setText("welcome"+user.getEmail());
+        textViewUserEmail.setText("welcome"+" "+user.getEmail());
 
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
 
@@ -65,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
     //    UID = user.getUid()+"";
-        databaseReference.child(user.getUid()).setValue(userInformation);
+        databaseReference.child("Users").child(user.getUid()).setValue(userInformation);
 
         Toast.makeText(this, "정보 저장완료", Toast.LENGTH_LONG).show();
     }

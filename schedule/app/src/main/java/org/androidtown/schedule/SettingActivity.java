@@ -3,9 +3,9 @@ package org.androidtown.schedule;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static android.R.attr.key;
 
 public class SettingActivity extends AppCompatActivity
 {
@@ -63,6 +61,13 @@ public class SettingActivity extends AppCompatActivity
                 Map<String, Object> childUpdates = new HashMap<>();
                 childUpdates.put("/Users/" + id + "/groups/" + get_groupId_text_toString , true);
                 childUpdates.put("/Groups/" + get_groupId_text_toString + "/member/" + id, true);
+
+                Intent groupchat_activity_intend = new Intent(SettingActivity.this,Test_Activity.class);
+                groupchat_activity_intend.putExtra("get_groupId_text_toString",get_groupId_text_toString);
+                //groupchat_activity_intend.putExtra("get_groupId_text_toString",get_groupId_text_toString);
+                groupchat_activity_intend.putExtra("id",id);
+                startActivity(groupchat_activity_intend);
+
 
                 databaseReference.updateChildren(childUpdates);
             }

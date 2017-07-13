@@ -65,12 +65,14 @@ public class SecondActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent test_activity_intent = new Intent(SecondActivity.this,Test_Activity.class); ;
+
                 startActivity(test_activity_intent);
             }
         });
         id_setting_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent setting_activity_intent = new Intent(SecondActivity.this,SettingActivity.class);
                 setting_activity_intent.putExtra("id",uid);
                 startActivity(setting_activity_intent);

@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             finish();
 
                             //Intent secondActivity_Intent = new Intent(getApplicationContext(),SecondActivity.class);
-                            //secondActivity_Intent.putExtra("id",mEmailView.getText().toString());
+                           // secondActivity_Intent.putExtra("id",mEmailView.getText().toString());
 
                             startActivity(new Intent(getApplicationContext(),SecondActivity.class));
                             //start the profile activity
