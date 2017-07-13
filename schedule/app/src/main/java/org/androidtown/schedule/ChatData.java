@@ -9,7 +9,7 @@ public class ChatData
     private String message;
 
     public ChatData(){}
-    public ChatData(String userName, String message, int day)
+    public ChatData(String userName, String message/*, int day*/)
     {
         this.userName = userName;
         this.message = message;
