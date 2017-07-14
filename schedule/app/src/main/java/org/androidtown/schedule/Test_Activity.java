@@ -51,7 +51,7 @@ public class Test_Activity extends AppCompatActivity
         Intent intent = getIntent();
         get_groupId_text_toString = intent.getStringExtra("get_groupId_text_toString");
         id = intent.getStringExtra("id");
-
+        Toast.makeText(this, "get : " + id, Toast.LENGTH_SHORT).show();
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -175,47 +175,38 @@ public class Test_Activity extends AppCompatActivity
             }
         });
     */
-<<<<<<< HEAD
+
         databaseReference.child("Users").child("ohji1006@").child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               // Users users = dataSnapshot.getValue(Users.class);  // chatData를 가져오고
-               // adapter.add(users.getUsers() + ":");
-             //   for(DataSnapshot snapshot : dataSnapshot.getChildren())
-             //   {
-                    adapter.add(dataSnapshot.getKey() + ":" + dataSnapshot.getValue());
-             //   }
-=======
-/*
+                adapter.add(dataSnapshot.getKey() + ":" + dataSnapshot.getValue());
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+/*
         databaseReference.child("Users").child("ohji1006@").child("groups").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
                 append_chat_conversation(dataSnapshot);
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
                 append_chat_conversation(dataSnapshot);
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) { }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) { }
-
             @Override
             public void onCancelled(DatabaseError databaseError) { }
         });
-
-
-
 */
 /*
-
         databaseReference.child("Users").child("ohji1006@").child("groups").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -235,16 +226,8 @@ public class Test_Activity extends AppCompatActivity
             }
         });
 */
-
-
+/*
         databaseReference.child("Groups").child(get_groupId_text_toString).child("chat_Room").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
-            @Override
-           /*
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Users users = dataSnapshot.getValue(Users.class);  // chatData를 가져오고
-                adapter.add(users.getUsers() + ":");
-            }*/
-
 
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
@@ -267,20 +250,6 @@ public class Test_Activity extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-    }
-
-    private String chat_msg,chat_user_name;
-
-
-    private void append_chat_conversation(DataSnapshot dataSnapshot){
-        Iterator i = dataSnapshot.getChildren().iterator();
-
-        while(i.hasNext()){
-            chat_msg = (String)  ((DataSnapshot)i.next()).getValue();
-            chat_user_name = (String) ((DataSnapshot)i.next()).getValue();
-
-            chat_conversation.append(chat_user_name+" : "+chat_msg+ "");
-        }
+        */
     }
 }

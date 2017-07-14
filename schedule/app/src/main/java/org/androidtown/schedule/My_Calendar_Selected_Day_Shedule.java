@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
@@ -54,7 +55,7 @@ public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                HashSet<CalendarDay> date = new HashSet<>();
+                ArrayList<CalendarDay> date = new ArrayList<>();
                 //넣기전에 초기화
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
