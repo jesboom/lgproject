@@ -94,10 +94,14 @@ public class SettingActivity extends AppCompatActivity
             year= temp_year;
             month = temp_monthOfYear;
             day = temp_dayOfMonth;
+
             Toast toast = Toast.makeText(SettingActivity.this, "year: " + year+ ", month: " + month+ " , day: "+ day,Toast.LENGTH_SHORT);
             toast.show();
 
+
+
             LayoutInflater inflater=getLayoutInflater();
+
             dialogView= inflater.inflate(R.layout.dialog_add_schedule, null);
 
             buider = new AlertDialog.Builder(SettingActivity.this);
