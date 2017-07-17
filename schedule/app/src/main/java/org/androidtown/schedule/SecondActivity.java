@@ -57,10 +57,10 @@ public class SecondActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 if(gid != null) {
-                    Intent group_calendar_activity_intent = new Intent(SecondActivity.this, Group_Calendar_Activity.class);
-                    group_calendar_activity_intent.putExtra("uid", uid);
-                    group_calendar_activity_intent.putExtra("gid", gid);
-                    startActivity(group_calendar_activity_intent);
+                    Intent show_groups_activity_intent = new Intent(SecondActivity.this, Show_groups_Activity.class);
+                    show_groups_activity_intent.putExtra("uid", uid);
+                 //   group_calendar_activity_intent.putExtra("gid", gid);
+                    startActivity(show_groups_activity_intent);
                 }
             }
         });
