@@ -1,8 +1,6 @@
 package org.androidtown.schedule;
 
-import android.app.AlarmManager;
 import android.app.DatePickerDialog;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -113,11 +111,11 @@ public class SettingActivity extends AppCompatActivity
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
 
-                    Intent i2 = new Intent(SettingActivity.this, AlarmActivity.class);
+                   /* Intent i2 = new Intent(SettingActivity.this, AlarmActivity.class);
                     PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,i2,0);
                     AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
                     am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+3000,pi);
-
+*/
 
                     EditText shedule_title_edit = (EditText)dialogView.findViewById(R.id.schedule_name);
                     EditText shedule_body_edit = (EditText)dialogView.findViewById(R.id.schedule_body);
@@ -128,7 +126,8 @@ public class SettingActivity extends AppCompatActivity
                     Toast toast2 = Toast.makeText(SettingActivity.this,"title: " + shedule_title + ", body: " + shedule_body ,Toast.LENGTH_SHORT);
                     toast2.show();
 
-                    Schedule schedule = new Schedule(shedule_body, year,month, day);
+                    Schedule schedule = new Schedule(year,month, day, hour, minute ,shedule_title,shedule_body,"dssd","dsf" );
+                  //  Schedule(int year, int mounth, int day, int hour, int minute, String title, String body)
                     databaseReference.child("Users").child(id).child("schedule").child(shedule_body).setValue(schedule);
 
                 }

@@ -37,9 +37,10 @@
         <activity android:name=".VoteActivity" />
         <activity android:name=".Test_Activity" />
         <activity android:name=".My_Calendar_Activity" />
-        <activity android:name=".My_Calendar_Selected_Day_Shedule"></activity>
+        <activity android:name=".My_Calendar_Selected_Day_Shedule" />
+        <activity android:name=".Group_Calendar_Activity" />
+        <activity android:name=".Show_schedule_activity"></activity>
         <receiver android:name=".AlarmActivity"/>
-
     </application>
 
 </manifest>

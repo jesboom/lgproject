@@ -33,8 +33,11 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:10.2.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
     testCompile 'junit:junit:4.12'
 }
+
+
 
 
 
