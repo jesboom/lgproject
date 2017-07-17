@@ -110,6 +110,13 @@ public class SettingActivity extends AppCompatActivity
             buider.setPositiveButton("Registe", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+
+                   /* Intent i2 = new Intent(SettingActivity.this, AlarmActivity.class);
+                    PendingIntent pi = PendingIntent.getBroadcast(getApplicationContext(),0,i2,0);
+                    AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+                    am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+3000,pi);
+*/
+
                     EditText shedule_title_edit = (EditText)dialogView.findViewById(R.id.schedule_name);
                     EditText shedule_body_edit = (EditText)dialogView.findViewById(R.id.schedule_body);
 

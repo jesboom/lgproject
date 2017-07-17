@@ -17,9 +17,9 @@ public class EventDecorator1 implements DayViewDecorator {
     private int color;
     private HashSet<CalendarDay> dates;
 
-    public EventDecorator1(int color, Collection<CalendarDay> dates) {
+    public EventDecorator1(int colorrrr, Collection<CalendarDay> dates) {
         this.dates = new HashSet<>(dates);
-        this.color = color;
+        this.color = colorrrr;
     }
 
 
