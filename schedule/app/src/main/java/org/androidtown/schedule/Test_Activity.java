@@ -101,6 +101,7 @@ public class Test_Activity extends AppCompatActivity
                 String userNicnkname = ""+dataSnapshot.getValue();
                 userNames = userNicnkname;
 
+
                 Toast.makeText(Test_Activity.this,"this is user name: " + userNames,Toast.LENGTH_LONG);
             }
 
@@ -110,6 +111,24 @@ public class Test_Activity extends AppCompatActivity
             }
         });
 
+
+        databaseReference.child("Groups").child(get_groupId_text_toString).child("chat_Room").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                adapter.clear();
+
+                for(DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    ChatData chatData = snapshot.getValue(ChatData.class);
+                    adapter.add(chatData.getUserName()+":"+chatData.getMessage());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 /*
         databaseReference.child("Users").child(id).addValueEventListener(new EventListener() {  // message는 child의 이벤트를 수신합니다.
 

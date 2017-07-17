@@ -1,0 +1,29 @@
+diff a/schedule/app/src/main/java/org/androidtown/schedule/Group_Calendar_Activity.java b/schedule/app/src/main/java/org/androidtown/schedule/Group_Calendar_Activity.java	(rejected hunks)
+@@ -52,6 +52,27 @@
+         Toast.makeText(this, uid + ":::!!!!!!!!!!!!!!!!!::: " + gid, Toast.LENGTH_LONG).show();
+ 
+         materialCalendarView = (MaterialCalendarView) findViewById(R.id.group_calander);
++        floatingActionButton1 = (FloatingActionButton) findViewById(R.id.add_chat);
++        floatingActionButton2 = (FloatingActionButton) findViewById(R.id.add_vote);
++        //floatingActionButton2 = (FloatingActionButton) findViewById(R.id.add_schedule2);
++
++        floatingActionButton1.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                //datePickerDialog = new DatePickerDialog(Group_Calendar_Activity.this,listener,2017,6,12);
++                //datePickerDialog.show();
++            }
++        });
++
++        floatingActionButton2.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                //datePickerDialog = new DatePickerDialog(Group_Calendar_Activity.this,listener,2017,6,12);
++                //datePickerDialog.show();
++            }
++        });
++
++
+ 
+         materialCalendarView.state().edit()
+                 .setFirstDayOfWeek(Calendar.SUNDAY)

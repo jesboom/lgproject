@@ -39,14 +39,10 @@
         <activity android:name=".My_Calendar_Activity" />
         <activity android:name=".My_Calendar_Selected_Day_Shedule" />
         <activity android:name=".Group_Calendar_Activity" />
-<<<<<<< HEAD
         <activity android:name=".Show_schedule_activity" />
         <activity android:name=".Group_Calendar_Selected_Day_Shedule_Activity" />
         <activity android:name=".Show_groups_Activity"></activity>
-=======
-        <activity android:name=".Show_schedule_activity"></activity>
-        <receiver android:name=".AlarmActivity"/>
->>>>>>> 06bcadb613e727ddea1386d21d878b64f6986a0d
+
     </application>
 
 </manifest>

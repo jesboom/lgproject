@@ -5,7 +5,9 @@ import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +31,9 @@ public class Group_Calendar_Activity extends AppCompatActivity
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private String uid;
     private String gid;
+    private FloatingActionButton floatingActionButton1;
+    private FloatingActionButton floatingActionButton2;
+
     private  int color;
     private int position;
     private ArrayList<Schedule> array_schedule;
@@ -49,6 +54,23 @@ public class Group_Calendar_Activity extends AppCompatActivity
 
         materialCalendarView = (MaterialCalendarView) findViewById(R.id.group_calander);
 
+        floatingActionButton1 = (FloatingActionButton) findViewById(R.id.add_chat);
+        floatingActionButton2 = (FloatingActionButton) findViewById(R.id.add_vote);
+
+        floatingActionButton1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        floatingActionButton2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         materialCalendarView.state().edit()
                 .setFirstDayOfWeek(Calendar.SUNDAY)
                 .setMinimumDate(CalendarDay.from(2014, 0, 1))
@@ -71,14 +93,9 @@ public class Group_Calendar_Activity extends AppCompatActivity
                 Toast.makeText(Group_Calendar_Activity.this, "" + date.getYear() + ":" + date.getMonth() + ":" + date.getDay(), Toast.LENGTH_SHORT).show();
                 //테스트 하기위해
 
-<<<<<<< HEAD
+
                 Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, Group_Calendar_Selected_Day_Shedule_Activity.class);
 
-=======
-                Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, My_Calendar_Selected_Day_Shedule.class);
-                ;
-                //schedule_ArrayList =(ArrayList<Schedule>) getIntent().getSerializableExtra("schedule_ArrayList");
->>>>>>> 06bcadb613e727ddea1386d21d878b64f6986a0d
                 selected_Day_Shedule_intent.putExtra("schedule_ArrayList", array_schedule);
                 selected_Day_Shedule_intent.putExtra("uid", uid);
                 selected_Day_Shedule_intent.putExtra("year", date.getYear());
