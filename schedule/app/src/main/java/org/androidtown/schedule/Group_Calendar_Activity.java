@@ -73,8 +73,9 @@ public class Group_Calendar_Activity extends AppCompatActivity
                 Toast.makeText(Group_Calendar_Activity.this, "" + date.getYear() + ":" + date.getMonth() + ":" + date.getDay(), Toast.LENGTH_SHORT).show();
                 //테스트 하기위해
 
-                Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, My_Calendar_Selected_Day_Shedule.class);
-                ;
+                Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, Group_Calendar_Selected_Day_Shedule_Activity.class);
+
+                selected_Day_Shedule_intent.putExtra("schedule_ArrayList", array_schedule);
                 selected_Day_Shedule_intent.putExtra("uid", uid);
                 selected_Day_Shedule_intent.putExtra("year", date.getYear());
                 selected_Day_Shedule_intent.putExtra("month", date.getMonth());
@@ -96,6 +97,7 @@ public class Group_Calendar_Activity extends AppCompatActivity
                     group_members_uids.add(temp_id);
                 }
                 array_hash_set = new ArrayList<ArrayList<CalendarDay>>();
+                array_schedule = new ArrayList<Schedule>();
 
                 for(int i =0; i< group_members_uids.size(); i++)
                 {
@@ -110,6 +112,11 @@ public class Group_Calendar_Activity extends AppCompatActivity
                             for(DataSnapshot snapshot : dataSnapshot.getChildren())
                             {
                                 Schedule temp_schedule = snapshot.getValue(Schedule.class);  // schedule 데이터를 가져오고
+
+                                if(temp_schedule == null)
+                                {
+                                    break;
+                                }
 
                                 //달력 버튼을 눌렀을때 화면에 날자에 해당하는 리스트를 띄우기 위해 저장.
                                 array_schedule.add(temp_schedule);
