@@ -71,19 +71,11 @@ public class Group_Calendar_Activity extends AppCompatActivity
                 Toast.makeText(Group_Calendar_Activity.this, "" + date.getYear() + ":" + date.getMonth() + ":" + date.getDay(), Toast.LENGTH_SHORT).show();
                 //테스트 하기위해
 
-<<<<<<< HEAD
+
                 Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, Group_Calendar_Selected_Day_Shedule_Activity.class);
 
-=======
-<<<<<<< HEAD
-                Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, Group_Calendar_Selected_Day_Shedule_Activity.class);
-
-=======
-                Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, My_Calendar_Selected_Day_Shedule.class);
-                ;
                 //schedule_ArrayList =(ArrayList<Schedule>) getIntent().getSerializableExtra("schedule_ArrayList");
->>>>>>> 06bcadb613e727ddea1386d21d878b64f6986a0d
->>>>>>> c90a3df50435a02ff5b36722196a7977ba8ece08
+
                 selected_Day_Shedule_intent.putExtra("schedule_ArrayList", array_schedule);
                 selected_Day_Shedule_intent.putExtra("uid", uid);
                 selected_Day_Shedule_intent.putExtra("year", date.getYear());
