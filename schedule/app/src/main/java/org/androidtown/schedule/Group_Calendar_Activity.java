@@ -96,6 +96,7 @@ public class Group_Calendar_Activity extends AppCompatActivity
 
                 Intent selected_Day_Shedule_intent = new Intent(Group_Calendar_Activity.this, Group_Calendar_Selected_Day_Shedule_Activity.class);
 
+
                 selected_Day_Shedule_intent.putExtra("schedule_ArrayList", array_schedule);
                 selected_Day_Shedule_intent.putExtra("uid", uid);
                 selected_Day_Shedule_intent.putExtra("year", date.getYear());

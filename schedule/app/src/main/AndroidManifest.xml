@@ -43,6 +43,11 @@
         <activity android:name=".Group_Calendar_Selected_Day_Shedule_Activity" />
         <activity android:name=".Show_groups_Activity"></activity>
 
+
+
+        <activity android:name=".Show_schedule_activity"></activity>
+
+
     </application>
 
 </manifest>
