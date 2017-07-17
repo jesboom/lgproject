@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+import static android.R.id.text1;
 
 public class Test_Activity extends AppCompatActivity
 {
@@ -42,7 +43,7 @@ public class Test_Activity extends AppCompatActivity
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     //private DatabaseReference databaseReferencetwo = firebaseDatabase.getReference();
     private ArrayAdapter<String> adapter;
-    private ArrayList<String> listItems = new ArrayList<String>();
+    private ArrayList<VoteData> listItems = new ArrayList<VoteData>();
     private EditText editText;
     private TextView chat_conversation;
 
@@ -61,6 +62,9 @@ public class Test_Activity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+      //  ListView listView = (ListView) findViewById(R.id.listv);
+
 
         Intent intent = getIntent();
         get_groupId_text_toString = intent.getStringExtra("get_groupId_text_toString");
@@ -84,11 +88,11 @@ public class Test_Activity extends AppCompatActivity
 
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                android.R.id.text1);
+                text1);
 
         listView.setAdapter( adapter);
         listView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-
+       // listView.setOnItemClickListener(new ListViewItemClickListener());
 
         databaseReference.child("Users").child(id).child("name").addValueEventListener(new ValueEventListener() {
             @Override
@@ -105,6 +109,7 @@ public class Test_Activity extends AppCompatActivity
 
             }
         });
+
 /*
         databaseReference.child("Users").child(id).addValueEventListener(new EventListener() {  // message는 child의 이벤트를 수신합니다.
 
@@ -199,7 +204,7 @@ public class Test_Activity extends AppCompatActivity
                 Intent vote_activity_intend = new Intent(Test_Activity.this,VoteActivity.class);
                 vote_activity_intend.putExtra("get_groupId_text_toString",get_groupId_text_toString);
                // //groupchat_activity_intend.putExtra("get_groupId_text_toString",get_groupId_text_toString);
-               // vote_activity_intend.putExtra("month",month);
+                vote_activity_intend.putExtra("id",id);
                 //vote_activity_intend.putExtra("day",day);
                 startActivity(vote_activity_intend);
 
@@ -235,6 +240,9 @@ public class Test_Activity extends AppCompatActivity
 
 
     }
+
+
+
     private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int temp_year, int temp_monthOfYear, int temp_dayOfMonth) {
@@ -258,6 +266,7 @@ public class Test_Activity extends AppCompatActivity
             buider.setPositiveButton("Vote", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+
                     EditText shedule_title_edit = (EditText)dialogView.findViewById(R.id.schedule_name);
                     EditText shedule_body_edit = (EditText)dialogView.findViewById(R.id.schedule_body);
 
@@ -271,7 +280,7 @@ public class Test_Activity extends AppCompatActivity
 
 
 
-                    databaseReference.child("Groups").child(get_groupId_text_toString).child("vote_Room").push().setValue(voteData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
+                    databaseReference.child("Groups").child(get_groupId_text_toString).child("vote_Room").child(shedule_title).setValue(voteData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
                     //  databaseReference.child("message").child("TTTTTT").setValue(users);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
 
                     editText.setText("");
