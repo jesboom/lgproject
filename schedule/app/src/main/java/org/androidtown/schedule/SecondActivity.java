@@ -100,18 +100,18 @@ public class SecondActivity extends AppCompatActivity
 
         //나중에 그룹이 여러개가 되면 수정해야함!!!!!!!!!
         databaseReference.child("Users").child(uid).child("groups").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //넣기전에 초기화
-                for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
-                    gid = snapshot.getKey()+"";
-                    Toast.makeText(SecondActivity.this,"get gid : "+ gid ,Toast.LENGTH_SHORT).show();
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    //넣기전에 초기화
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren())
+                    {
+                        gid = snapshot.getKey()+"";
+                        Toast.makeText(SecondActivity.this,"get gid : "+ gid ,Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
         });
     }
 }

@@ -33,6 +33,7 @@ public class Group_Calendar_Activity extends AppCompatActivity
     private String gid;
     private  int color;
     private int position;
+    private ArrayList<Schedule> array_schedule;
     private ArrayList< ArrayList<CalendarDay>> array_hash_set;
     public  HashSet<CalendarDay> date;
 
@@ -110,6 +111,8 @@ public class Group_Calendar_Activity extends AppCompatActivity
                             {
                                 Schedule temp_schedule = snapshot.getValue(Schedule.class);  // schedule 데이터를 가져오고
 
+                                //달력 버튼을 눌렀을때 화면에 날자에 해당하는 리스트를 띄우기 위해 저장.
+                                array_schedule.add(temp_schedule);
                                 CalendarDay calendarDay2 = CalendarDay.from(temp_schedule.getYear(),
                                         temp_schedule.getMounth(),
                                         temp_schedule.getDay());
@@ -126,92 +129,38 @@ public class Group_Calendar_Activity extends AppCompatActivity
                                 //사람 수랑 받은 데이터 수가 일치할때 그린다.
                                  if(array_hash_set.size() == group_members_uids.size())
                                  {
+                                     Toast.makeText(Group_Calendar_Activity.this, "i : "+ i +": "+array_hash_set.size() + " : " + group_members_uids.size(),Toast.LENGTH_LONG).show();
+
                                      //저장된 날자들로 점을 그린다!.
                                      switch (i)
                                      {
                                          case 0:
-                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED, i+1, array_hash_set.get(i)));
+                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED, 1, array_hash_set.get(0)));
                                              break;
                                          case 1:
-                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.BLUE, i+1,  array_hash_set.get(i)));
+                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.BLUE, 2,  array_hash_set.get(1)));
                                              break;
                                          case 2:
-                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.CYAN, i+2,  array_hash_set.get(i)));
+                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.GREEN, 3,  array_hash_set.get(2)));
                                              break;
                                          case 3:
-                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.GREEN, i+3,  array_hash_set.get(i)));
+                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.YELLOW, 4,  array_hash_set.get(3)));
                                              break;
                                          case 4:
-                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.MAGENTA, i+4,  array_hash_set.get(i)));
+                                             materialCalendarView.addDecorator(new MyCustomDecorator(Color.MAGENTA, 5,  array_hash_set.get(4)));
                                      }
                                  }
                             }
-                            //materialCalendarView.addDecorator(new EventDecorator1(Color.BLUE, date));
-                           // materialCalendarView.addDecorator(new MyCustomDecorator(color ,position, date));
-                            //저장된 날자들로 점을 그린다!.
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                         }
                     });
-
-                   // Toast.makeText(Group_Calendar_Activity.this, "asdfsadf adfas color is" + Color.RED+"",Toast.LENGTH_LONG).show();
                 }
-
-              //  Toast.makeText(Group_Calendar_Activity.this, "Enddddddddddddddddddddddddddd", Toast.LENGTH_SHORT).show();
             }
-            //materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED,4, date));
-            /*
-            databaseReference.child("Users").child(uid).child("schedule").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    HashSet<CalendarDay> date = new HashSet<>();
-                    //넣기전에 초기화
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                    {
-                        Schedule temp_schedule = snapshot.getValue(Schedule.class);  // schedule 데이터를 가져오고
-
-                        CalendarDay calendarDay2 = CalendarDay.from(temp_schedule.getYear(),
-                                temp_schedule.getMounth(),
-                                temp_schedule.getDay());
-                        //getNew Instance (위)
-                        // 캘린더 년, 달, 일 설정후 HashSet에 넣는다.
-                        // schedule_ArrayList.add(temp_schedule);
-                        date.add(calendarDay2);
-                    }
-                    materialCalendarView.addDecorator(new EventDecorator1(Color.BLUE, date));
-                    //HashSet에 넣어진 CalendarDay 를 기반으로 달력에 점을 그린다.
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-            */
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        /*
-        Toast.makeText(this, "start sleep", Toast.LENGTH_SHORT);
-        SystemClock.sleep(5000);
-        Toast.makeText(this, "start second sleep", Toast.LENGTH_SHORT);
-        SystemClock.sleep(5000);
-        Toast.makeText(this, "end sleep", Toast.LENGTH_SHORT);
-        for(int j =0 ; j< array_hash_set.size(); j++)
-        {
-            for(int k =0 ; j< array_hash_set.get(k).size(); k++)
-            {
-                Toast.makeText(Group_Calendar_Activity.this, ""+array_hash_set.get(j).get(k), Toast.LENGTH_SHORT).show();
-            }
-        }
-        */
     }
 }

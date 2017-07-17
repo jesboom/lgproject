@@ -1,23 +1,75 @@
 package org.androidtown.schedule;
 
+import java.io.Serializable;
+
 /**
  * Created by ohji1 on 2017-07-08.
  */
 
-public class Schedule
+public class Schedule implements Serializable
 {
-    int year;
-    int mounth;
-    int day;
-    String body;
+    private int year;
+    private int mounth;
+    private int day;
+    private int hour;
+    private int minute;
+    private String body;
+    private String title;
+    private String uid;
+    private String name;
 
     public Schedule(){};
 
-    public Schedule(String body, int year, int mounth, int day) {
+    public Schedule(int year, int mounth, int day, int hour, int minute, String title, String body, String uid, String name) {
         this.year = year;
         this.mounth = mounth;
         this.day = day;
+        this.hour = hour;
+        this.minute = minute;
         this.body = body;
+        this.title = title;
+        this.uid = uid;
+        this.name = name;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getYear() {

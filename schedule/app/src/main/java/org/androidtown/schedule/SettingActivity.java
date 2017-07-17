@@ -94,10 +94,14 @@ public class SettingActivity extends AppCompatActivity
             year= temp_year;
             month = temp_monthOfYear;
             day = temp_dayOfMonth;
+
             Toast toast = Toast.makeText(SettingActivity.this, "year: " + year+ ", month: " + month+ " , day: "+ day,Toast.LENGTH_SHORT);
             toast.show();
 
+
+
             LayoutInflater inflater=getLayoutInflater();
+
             dialogView= inflater.inflate(R.layout.dialog_add_schedule, null);
 
             buider = new AlertDialog.Builder(SettingActivity.this);
@@ -115,7 +119,8 @@ public class SettingActivity extends AppCompatActivity
                     Toast toast2 = Toast.makeText(SettingActivity.this,"title: " + shedule_title + ", body: " + shedule_body ,Toast.LENGTH_SHORT);
                     toast2.show();
 
-                    Schedule schedule = new Schedule(shedule_body, year,month, day);
+                    Schedule schedule = new Schedule(year,month, day, hour, minute ,shedule_title,shedule_body,"dssd","dsf" );
+                  //  Schedule(int year, int mounth, int day, int hour, int minute, String title, String body)
                     databaseReference.child("Users").child(id).child("schedule").child(shedule_body).setValue(schedule);
 
                 }

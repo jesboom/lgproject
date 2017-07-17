@@ -34,7 +34,7 @@
 
             <EditText
                 android:id="@+id/test_editText"
-                android:layout_width="wrap_content"
+                android:layout_width="204dp"
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -42,10 +42,22 @@
 
             <Button
                 android:id="@+id/test_button"
-                android:layout_width="158dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/vote_button"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Button" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/votelist_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

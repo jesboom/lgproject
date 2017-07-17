@@ -33,10 +33,12 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_temp_login" />
+        <activity android:name=".VoteActivity" />
         <activity android:name=".Test_Activity" />
         <activity android:name=".My_Calendar_Activity" />
         <activity android:name=".My_Calendar_Selected_Day_Shedule" />
-        <activity android:name=".Group_Calendar_Activity"></activity>
+        <activity android:name=".Group_Calendar_Activity" />
+        <activity android:name=".Show_schedule_activity"></activity>
     </application>
 
 </manifest>
