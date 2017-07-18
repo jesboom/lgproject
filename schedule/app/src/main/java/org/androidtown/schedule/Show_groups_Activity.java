@@ -63,7 +63,6 @@ public class Show_groups_Activity extends AppCompatActivity
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-
                 //넣기전에 초기화
                 for(DataSnapshot snapshot : dataSnapshot.getChildren())
                 {
