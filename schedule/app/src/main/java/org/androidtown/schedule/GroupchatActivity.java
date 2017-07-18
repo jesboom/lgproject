@@ -61,7 +61,7 @@ public class GroupchatActivity extends AppCompatActivity{
         Intent intent = getIntent();
         get_groupId_text_toString = intent.getStringExtra("get_groupId_text_toString");
 
-        groupId_text = (EditText)findViewById(R.id.Group_ID_EditText);
+      //  groupId_text = (EditText)findViewById(R.id.Group_ID_EditText);
 
 
 
@@ -90,7 +90,7 @@ public class GroupchatActivity extends AppCompatActivity{
                 ChatData chatData = new ChatData(userName, editText.getText().toString());  // 유저 이름과 메세지로 chatData 만들기
 
                 // User userData = new User();
-                //M1 m1 = new M1("1","2","123");
+
 
                 // Schedule schedule = new Schedule("fad");
                 //  Groups groups = new Groups(true);

@@ -25,11 +25,8 @@
         </activity>
         <activity
             android:name=".SecondActivity"
-            android:label="@string/title_activity_temp_login" />
-        <activity android:name=".SettingActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_temp_login" />
+            android:label="@string/title_activity_temp_login"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SecTempLoginActivity" />
         <activity
             android:name=".ProfileActivity"
@@ -37,17 +34,26 @@
         <activity android:name=".VoteActivity"
            android:label="Long Click to Vote!"/>
         <activity android:name=".Test_Activity" />
-        <activity android:name=".My_Calendar_Activity"
-            android:label="My Calendar"/>
         <activity android:name=".My_Calendar_Selected_Day_Shedule" />
-        <activity android:name=".Group_Calendar_Activity"
-            android:label="Group Calendar"/>
+
         <activity android:name=".Show_schedule_activity" />
         <activity android:name=".Group_Calendar_Selected_Day_Shedule_Activity" />
         <activity android:name=".Show_groups_Activity"
             android:label="Group List"/>
         <activity android:name=".Show_schedule_activity" />
         <activity android:name=".Group_chat_room_activity"></activity>
+        <activity
+            android:name=".SettingActivity"
+            android:label="@string/Setting"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".My_Calendar_Activity"
+            android:label="@string/My_calendar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Group_Calendar_Activity"
+            android:label="@string/Group_calendar"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

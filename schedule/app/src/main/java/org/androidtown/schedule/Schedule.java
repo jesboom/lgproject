@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by ohji1 on 2017-07-08.
  */
 
+//this is DTO
 public class Schedule implements Serializable
 {
     private int year;

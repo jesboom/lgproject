@@ -3,6 +3,7 @@ package org.androidtown.schedule;
  * Created by ohji1 on 2017-07-05.
  */
 
+//this is DTO
 public class ChatData
 {
     private String userName;

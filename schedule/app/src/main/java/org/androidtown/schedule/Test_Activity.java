@@ -43,7 +43,7 @@ public class Test_Activity extends AppCompatActivity
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     //private DatabaseReference databaseReferencetwo = firebaseDatabase.getReference();
     private ArrayAdapter<String> adapter;
-    private ArrayList<VoteData> listItems = new ArrayList<VoteData>();
+   // private ArrayList<VoteData> listItems = new ArrayList<VoteData>();
     private EditText editText;
     private TextView chat_conversation;
 
@@ -174,7 +174,7 @@ public class Test_Activity extends AppCompatActivity
                 ChatData chatData = new ChatData(userNames , editText.getText().toString());  // 유저 이름과 메세지로 chatData 만들기
 
                // User userData = new User();
-                //M1 m1 = new M1("1","2","123");
+
 
                // Schedule schedule = new Schedule("fad");
               //  Groups groups = new Groups(true);
@@ -295,11 +295,11 @@ public class Test_Activity extends AppCompatActivity
                     Toast toast2 = Toast.makeText(Test_Activity.this,"title: " + shedule_title + ", body: " + shedule_body ,Toast.LENGTH_SHORT);
                     toast2.show();
 
-                    VoteData voteData = new VoteData(shedule_title , shedule_body, day,month,year);  // 유저 이름과 메세지로 chatData 만들기
+               //     VoteData voteData = new VoteData(shedule_title , shedule_body, day,month,year);  // 유저 이름과 메세지로 chatData 만들기
 
 
 
-                    databaseReference.child("Groups").child(get_groupId_text_toString).child("vote_Room").child(shedule_title).setValue(voteData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
+                 //   databaseReference.child("Groups").child(get_groupId_text_toString).child("vote_Room").child(shedule_title).setValue(voteData);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
                     //  databaseReference.child("message").child("TTTTTT").setValue(users);  // 기본 database 하위 message라는 child에 chatData를 list로 만들기
 
                     editText.setText("");

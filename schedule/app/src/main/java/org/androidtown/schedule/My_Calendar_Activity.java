@@ -8,10 +8,15 @@ import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
@@ -57,6 +62,17 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__calendar_);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         schedule_ArrayList = new ArrayList<Schedule>();
         Intent intent = getIntent();
@@ -219,9 +235,74 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
         }
     };
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        return false;
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.second, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case R.id.nav_home:
+                Intent h = new Intent(My_Calendar_Activity.this, SecondActivity.class);
+                startActivity(h);
+                break;
+            case R.id.nav_my_calendar:
+                Intent m = new Intent(My_Calendar_Activity.this, My_Calendar_Activity.class);
+                startActivity(m);
+                break;
+            case R.id.nav_group_calendar:
+                Intent g = new Intent(My_Calendar_Activity.this, Show_groups_Activity.class);
+                g.putExtra("uid",uid);
+                startActivity(g);
+                break;
+            case R.id.nav_setting:
+                Intent s = new Intent(My_Calendar_Activity.this, ProfileActivity.class);
+                s.putExtra("uid", uid);
+                startActivity(s);
+                break;
+            case R.id.nav_logout:
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(My_Calendar_Activity.this, LoginActivity.class));
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
 }
