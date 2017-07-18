@@ -1,19 +1,26 @@
 package org.androidtown.schedule;
 
+import android.content.Intent;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -32,11 +39,15 @@ import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
-public class My_Calendar_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+public class My_Calendar_Activity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private ArrayList<Schedule> schedule_ArrayList;
     private MaterialCalendarView materialCalendarView;
@@ -53,10 +64,20 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__calendar_);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         schedule_ArrayList = new ArrayList<Schedule>();
         Intent intent = getIntent();
@@ -126,11 +147,11 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
                     //달력 눌렀을때 모든 스케쥴 정보를 보내주기위해.
 
                     CalendarDay calendarDay2 = CalendarDay.from(temp_schedule.getYear(),
-                                                                 temp_schedule.getMounth(),
-                                                                 temp_schedule.getDay());
+                            temp_schedule.getMounth(),
+                            temp_schedule.getDay());
                     //getNew Instance (위)
                     // 캘린더 년, 달, 일 설정후 HashSet에 넣는다.
-                   // schedule_ArrayList.add(temp_schedule);
+                    // schedule_ArrayList.add(temp_schedule);
                     date.add(calendarDay2);
                 }
                 materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED,1, date));
@@ -161,7 +182,10 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+
     }
+
 
     private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener()
     {
@@ -177,6 +201,7 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
 
         }
     };
+
     private TimePickerDialog.OnTimeSetListener time_set_listener = new TimePickerDialog.OnTimeSetListener() {
         @Override
         public void onTimeSet(TimePicker timePicker, int hourOfDay, int minuteOfhour)
@@ -202,7 +227,7 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
                     Toast toast2 = Toast.makeText(My_Calendar_Activity.this, "title: " + shedule_title + ", body: " + shedule_body ,Toast.LENGTH_SHORT);
                     toast2.show();
 
-                  //  Schedule schedule = new Schedule(shedule_body, year,month, day);
+                    //  Schedule schedule = new Schedule(shedule_body, year,month, day);
                     Schedule schedule = new Schedule(year,month, day, hour, minute ,shedule_title,shedule_body,uid,name );
                     databaseReference.child("Users").child(uid).child("schedule").push().setValue(schedule);
                 }
@@ -219,8 +244,70 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
     };
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
 
-        return false;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.second, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case R.id.nav_home:
+                Intent h = new Intent(My_Calendar_Activity.this, SecondActivity.class);
+                startActivity(h);
+                break;
+            case R.id.nav_my_calendar:
+                Intent m = new Intent(My_Calendar_Activity.this, My_Calendar_Activity.class);
+                startActivity(m);
+                break;
+            case R.id.nav_group_calendar:
+                Intent g = new Intent(My_Calendar_Activity.this, Show_groups_Activity.class);
+                g.putExtra("uid",uid);
+                startActivity(g);
+                break;
+            case R.id.nav_setting:
+                Intent s = new Intent(My_Calendar_Activity.this, SettingActivity.class);
+                startActivity(s);
+                break;
+            case R.id.nav_logout:
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(My_Calendar_Activity.this, LoginActivity.class));
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
