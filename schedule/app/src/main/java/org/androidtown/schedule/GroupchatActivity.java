@@ -61,7 +61,7 @@ public class GroupchatActivity extends AppCompatActivity{
         Intent intent = getIntent();
         get_groupId_text_toString = intent.getStringExtra("get_groupId_text_toString");
 
-        groupId_text = (EditText)findViewById(R.id.Group_ID_EditText);
+        //groupId_text = (EditText)findViewById(R.id.Group_ID_EditText);
 
 
 
