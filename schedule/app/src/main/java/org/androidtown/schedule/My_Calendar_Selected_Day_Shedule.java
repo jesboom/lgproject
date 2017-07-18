@@ -18,6 +18,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 
 public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
@@ -27,13 +29,14 @@ public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
     private String uid;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
-    private ArrayAdapter<String> adapter;
+    private ScheduleViewAdapter adapter;
     private ArrayList<Schedule> schedule_ArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__calendar__selected__day__shedule);
+
         ListView listView = (ListView) findViewById(R.id.my_calander_selected_day_schedule);
 
         Intent intent = getIntent();
@@ -43,13 +46,14 @@ public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
         mouth = intent.getIntExtra("month",0);
         day =intent.getIntExtra("day",0);
         //달력에서 년 월 일 받아옴
+        int temp_mouth = mouth+1;
+
+        setTitle(year+ " 년 "+ temp_mouth+ " 월 " + day + " 일 ");
 
         Toast.makeText(this, uid + " :: " + year+": " + mouth+ " : "+ day,Toast.LENGTH_SHORT).show();
         // 제대로 받아 온지 테스트
 
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1);
+        adapter = new ScheduleViewAdapter();
         // 어댑터 설정
 
         listView.setAdapter( adapter);
@@ -66,6 +70,11 @@ public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
         });
         // 리스트 뷰에 어댑터 셋
 
+        //ArrayList 날짜순으로 재배열
+        AscendingObj ascending = new AscendingObj();
+        Collections.sort(schedule_ArrayList, ascending);
+
+        //년 월 일이 맞으면 어댑터에 붙인후 출력
         for(Schedule schedules :schedule_ArrayList )
         {
             int temp_year=schedules.getYear();
@@ -75,35 +84,10 @@ public class My_Calendar_Selected_Day_Shedule extends AppCompatActivity {
             if(temp_year== year && temp_mount== mouth && temp_day== day)
             {
                 temp_mount = temp_mount+1;
-                adapter.add(temp_year+"."+temp_mount
-                        +"."+temp_day + " :: Schedule Title :: " +schedules.getTitle() );
+                adapter.addItem(schedules);
             }
         }
-
-
-        /* 이전 데이타셋에서의 리스너
-        databaseReference.child("Users").child(uid).child("schedule").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                ArrayList<CalendarDay> date = new ArrayList<>();
-                //넣기전에 초기화
-                for(DataSnapshot snapshot : dataSnapshot.getChildren())
-                {
-                    String temp_key = snapshot.getKey();
-                    Schedule temp_schedule = snapshot.getValue(Schedule.class);  // schedule 데이터를 가져오고
-
-                    if(temp_schedule.getYear() == year && temp_schedule.getMounth() == mouth && temp_schedule.getDay() == day)
-                    {
-                        adapter.add(temp_schedule.getYear()+"."+temp_schedule.getMounth()
-                                     +"."+temp_schedule.getDay()+ " Schedule : " + temp_key );
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-        */
     }
 }
+
+// 차례대로 배열하는 class

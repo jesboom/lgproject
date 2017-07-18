@@ -29,14 +29,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/add_chat"
-            app:fab_icon="@drawable/ic_star"
+            app:fab_icon="@drawable/ic_chat"
             />
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/add_vote"
-            app:fab_icon="@drawable/ic_star"
+            app:fab_icon="@drawable/ic_schedule"
             />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vote_list"
+            app:fab_icon="@drawable/ic_list"
+            />
+
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
