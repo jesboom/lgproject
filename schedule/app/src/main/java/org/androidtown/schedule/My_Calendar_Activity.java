@@ -133,8 +133,10 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
                    // schedule_ArrayList.add(temp_schedule);
                     date.add(calendarDay2);
                 }
-                materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED,1, date));
-                //HashSet에 넣어진 CalendarDay 를 기반으로 달력에 점을 그린다.
+               // materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED,1, date));
+                //date에 넣어진 CalendarDay 를 기반으로 달력에 점을 그린다.
+                materialCalendarView.addDecorator(new GroupCustomDecorator(Color.rgb(120,43,144), 1, date));
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -146,7 +148,6 @@ public class My_Calendar_Activity extends AppCompatActivity implements Navigatio
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 //넣기전에 초기화
-
                 if(dataSnapshot.getValue() == null)
                 {
                     Toast.makeText(My_Calendar_Activity.this, "there is no name: auto name get!",Toast.LENGTH_LONG).show();
