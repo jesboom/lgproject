@@ -7,7 +7,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.support.design.widget.NavigationView;
 import android.support.annotation.NonNull;
+<<<<<<< HEAD
 
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +20,25 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+<<<<<<< HEAD
+=======
 import android.widget.Toast;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+=======
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
+import android.widget.Toast;
+
+import com.getbase.floatingactionbutton.FloatingActionButton;
+
+import com.google.firebase.auth.FirebaseAuth;
+>>>>>>> dong
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,12 +52,15 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+
 public class Group_Calendar_Activity extends AppCompatActivity
-{
+        implements NavigationView.OnNavigationItemSelectedListener {
+
     ArrayList<String> group_members_uids = new ArrayList<>();
     MaterialCalendarView materialCalendarView;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private String uid;
     private String gid;
     private FloatingActionButton fab_add_chat;
@@ -57,6 +81,8 @@ public class Group_Calendar_Activity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group__calendar_);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         Intent intent = getIntent();
         gid = intent.getStringExtra("gid");
@@ -75,10 +101,17 @@ public class Group_Calendar_Activity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent vote_list_intent = new Intent(Group_Calendar_Activity.this, VoteActivity.class);
+<<<<<<< HEAD
 
                 vote_list_intent.putExtra("uid", uid );
                 vote_list_intent.putExtra("gid", gid );
 
+=======
+
+                vote_list_intent.putExtra("uid", uid );
+                vote_list_intent.putExtra("gid", gid );
+
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
                 startActivity(vote_list_intent);
             }
         });
@@ -153,7 +186,7 @@ public class Group_Calendar_Activity extends AppCompatActivity
 
                 for(int i =0; i< group_members_uids.size(); i++)
                 {
-                  //  Toast.makeText(Group_Calendar_Activity.this, "group_members_uids: " + group_members_uids.get(i), Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(Group_Calendar_Activity.this, "group_members_uids: " + group_members_uids.get(i), Toast.LENGTH_SHORT).show();
 
                     databaseReference.child("Users").child(group_members_uids.get(i)).child("schedule").addListenerForSingleValueEvent(new ValueEventListener()
                     {
@@ -183,6 +216,10 @@ public class Group_Calendar_Activity extends AppCompatActivity
                             if(array_hash_set.size() == group_members_uids.size())
                             {
                                 //사람 수랑 받은 데이터 수가 일치할때 그린다.
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
                                 for(int i = 0; i< array_hash_set.size() ; i++)
                                 {
                                  //    Toast.makeText(Group_Calendar_Activity.this, "i : "+ i +": "+array_hash_set.size() + " : " + group_members_uids.size(),Toast.LENGTH_LONG).show();
@@ -205,6 +242,31 @@ public class Group_Calendar_Activity extends AppCompatActivity
                                              materialCalendarView.addDecorator(new MyCustomDecorator(Color.MAGENTA, 5,  array_hash_set.get(4)));
                                      }
                                  }
+=======
+                                if(array_hash_set.size() == group_members_uids.size())
+                                {
+                                    Toast.makeText(Group_Calendar_Activity.this, "i : "+ i +": "+array_hash_set.size() + " : " + group_members_uids.size(),Toast.LENGTH_LONG).show();
+
+                                    //저장된 날자들로 점을 그린다!.
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            materialCalendarView.addDecorator(new MyCustomDecorator(Color.RED, 1, array_hash_set.get(0)));
+                                            break;
+                                        case 1:
+                                            materialCalendarView.addDecorator(new MyCustomDecorator(Color.BLUE, 2,  array_hash_set.get(1)));
+                                            break;
+                                        case 2:
+                                            materialCalendarView.addDecorator(new MyCustomDecorator(Color.GREEN, 3,  array_hash_set.get(2)));
+                                            break;
+                                        case 3:
+                                            materialCalendarView.addDecorator(new MyCustomDecorator(Color.YELLOW, 4,  array_hash_set.get(3)));
+                                            break;
+                                        case 4:
+                                            materialCalendarView.addDecorator(new MyCustomDecorator(Color.MAGENTA, 5,  array_hash_set.get(4)));
+                                    }
+                                }
+>>>>>>> dong
                             }
                         }
                         @Override
@@ -247,6 +309,82 @@ public class Group_Calendar_Activity extends AppCompatActivity
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.second, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case R.id.nav_home:
+                Intent h = new Intent(Group_Calendar_Activity.this, SecondActivity.class);
+                startActivity(h);
+                break;
+            case R.id.nav_my_calendar:
+                Intent m = new Intent(Group_Calendar_Activity.this, My_Calendar_Activity.class);
+                startActivity(m);
+                break;
+            case R.id.nav_group_calendar:
+                Intent g = new Intent(Group_Calendar_Activity.this, Show_groups_Activity.class);
+                startActivity(g);
+                break;
+            case R.id.nav_setting:
+                Intent s = new Intent(Group_Calendar_Activity.this, SettingActivity.class);
+                startActivity(s);
+                break;
+            case R.id.nav_logout:
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(Group_Calendar_Activity.this, LoginActivity.class));
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener()

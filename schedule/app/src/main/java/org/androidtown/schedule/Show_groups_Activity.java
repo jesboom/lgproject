@@ -27,6 +27,7 @@ public class Show_groups_Activity extends AppCompatActivity
     private ArrayAdapter<String> adapter;
     private ListView listView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
