@@ -25,8 +25,12 @@
         </activity>
         <activity
             android:name=".SecondActivity"
-            android:label="@string/title_activity_temp_login" />
-        <activity android:name=".SettingActivity" />
+            android:label="@string/Home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SettingActivity"
+            android:label="@string/Setting"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_temp_login" />
@@ -34,13 +38,21 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_temp_login" />
-        <activity android:name=".VoteActivity" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
+        <activity android:name=".VoteActivity"
+           android:label="Long Click to Vote!"/>
         <activity android:name=".Test_Activity" />
-        <activity android:name=".My_Calendar_Activity" />
+        <activity android:name=".My_Calendar_Activity"
+            android:label="My Calendar"/>
         <activity android:name=".My_Calendar_Selected_Day_Shedule" />
-        <activity android:name=".Group_Calendar_Activity" />
+        <activity android:name=".Group_Calendar_Activity"
+            android:label="Group Calendar"/>
         <activity android:name=".Show_schedule_activity" />
         <activity android:name=".Group_Calendar_Selected_Day_Shedule_Activity" />
+<<<<<<< HEAD
         <activity android:name=".Show_groups_Activity" />
         <activity android:name=".Show_schedule_activity" />
 
@@ -54,6 +66,42 @@
             android:name=".AlarmSoundService"
             android:enabled="true"
             android:exported="true"></service>
+=======
+        <activity android:name=".Show_groups_Activity"
+            android:label="Group List"/>
+        <activity android:name=".Show_schedule_activity" />
+        <activity android:name=".Group_chat_room_activity"></activity>
+<<<<<<< HEAD
+=======
+
+
+        <activity android:name=".VoteActivity" />
+        <activity android:name=".Test_Activity" />
+
+        <activity
+            android:name=".My_Calendar_Activity"
+            android:label="@string/My_calendar"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".My_Calendar_Selected_Day_Shedule"
+            android:label="Schedule"/>
+
+        <activity
+            android:name=".Group_Calendar_Activity"
+            android:label="@string/Group_calendar"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Show_schedule_activity" />
+
+        <activity android:name=".Group_Calendar_Selected_Day_Shedule_Activity" />
+
+        <activity android:name=".Show_groups_Activity"   android:label="Groups" />
+        <activity android:name=".Show_schedule_activity" />
+
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
     </application>
 
 </manifest>

@@ -17,10 +17,34 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+<<<<<<< HEAD
     <string name="title_activity_main2">Main2Activity</string>
+=======
+    <string name="title_activity_second">SecondActivity</string>
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+<<<<<<< HEAD
+=======
+    <string name="home">Home</string>
+    <string name="my_calendar">My Calendar</string>
+    <string name="group_calendar">Group Calendar</string>
+    <string name="setting">Setting</string>
+    <string name="information">Information</string>
+    <string name="share">Share</string>
+    <string name="android_studio">Android Studio</string>
+    <string name="android_studio_android_com">android.studio@android.com</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_group__calendar_">Group_Calendar_Activity</string>
+    <string name="title_activity_my__calendar_">My_Calendar_Activity</string>
+    <string name="Home">Home</string>
+    <string name="Setting">Setting</string>
+    <string name="My_calendar">My Calendar</string>
+    <string name="Group_calendar">Group Calendar</string>
+    <string name="logout">Logout</string>
+    <string name="schedule">Schedule</string>
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
 </resources>

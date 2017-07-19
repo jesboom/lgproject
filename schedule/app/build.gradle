@@ -6,7 +6,7 @@ android {
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "org.androidtown.schedule"
-        minSdkVersion 15
+        minSdkVersion 22
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -25,9 +25,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
     compile 'com.google.firebase:firebase-database:10.2.1'
     compile 'com.google.firebase:firebase-core:10.2.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.android.gms:play-services-auth:10.2.1'
     compile 'com.google.firebase:firebase-auth:10.2.1'
@@ -46,4 +48,11 @@ dependencies {
 
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
 apply plugin: 'com.google.gms.google-services'
