@@ -16,9 +16,19 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 </resources>
 =======
+=======
+<<<<<<< HEAD
+    <style name="TextAppearance.Holo.Widget.ActionBar.Menu" parent="@android:style/TextAppearance.Holo.Small">
+        <item name="android:textSize">18sp</item>
+    </style>
+=======
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
+
+>>>>>>> 0f6496b0e642d438cc0e0072c0740d2bc9eaffd3
 </resources>
 >>>>>>> jihun

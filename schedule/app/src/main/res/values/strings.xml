@@ -17,12 +17,25 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+<<<<<<< HEAD
     <string name="title_activity_second">SecondActivity</string>
+=======
+<<<<<<< HEAD
+    <string name="title_activity_main2">Main2Activity</string>
+=======
+    <string name="title_activity_second">SecondActivity</string>
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
+>>>>>>> 0f6496b0e642d438cc0e0072c0740d2bc9eaffd3
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 0f6496b0e642d438cc0e0072c0740d2bc9eaffd3
     <string name="home">Home</string>
     <string name="my_calendar">My Calendar</string>
     <string name="group_calendar">Group Calendar</string>
@@ -41,7 +54,11 @@
     <string name="logout">Logout</string>
     <string name="schedule">Schedule</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </resources>
 =======
+=======
+>>>>>>> 91b5df027af026cf45ac27ef8bd898b573bbf8b7
+>>>>>>> 0f6496b0e642d438cc0e0072c0740d2bc9eaffd3
 </resources>
 >>>>>>> jihun

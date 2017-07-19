@@ -28,6 +28,7 @@
                 android:title="@string/share" />
             <item
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:id="@+id/nav_informatiom"
             android:icon="@mipmap/ic_information"
             android:title="@string/information" />
@@ -36,6 +37,11 @@
                 android:icon="@mipmap/ic_information"
                 android:title="@string/information" />
 >>>>>>> jihun
+=======
+            android:id="@+id/nav_informatiom"
+            android:icon="@mipmap/ic_information"
+            android:title="@string/information" />
+>>>>>>> 0f6496b0e642d438cc0e0072c0740d2bc9eaffd3
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@mipmap/ic_logout"
@@ -44,7 +50,11 @@
     </item>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 </menu>
 =======
 </menu>
 >>>>>>> jihun
+=======
+</menu>
+>>>>>>> 0f6496b0e642d438cc0e0072c0740d2bc9eaffd3
