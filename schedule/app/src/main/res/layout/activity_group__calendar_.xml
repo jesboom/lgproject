@@ -15,6 +15,40 @@
         android:layout_height="match_parent"
         tools:context="org.androidtown.schedule.Group_Calendar_Activity">
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_calander_multiple_actions"
+        android:layout_margin="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        >
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_chat"
+            app:fab_icon="@drawable/ic_chat"
+            />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_vote"
+            app:fab_icon="@drawable/ic_schedule"
+<<<<<<< HEAD
+=======
+            />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vote_list"
+            app:fab_icon="@drawable/ic_list"
+>>>>>>> 0f58f09e521732afe9012a42edb6268586a9aa97
+            />
+        <com.getbase.floatingactionbutton.FloatingActionButton
+=======
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/group_calander"
             android:layout_width="368dp"
@@ -27,6 +61,7 @@
 
         <com.getbase.floatingactionbutton.FloatingActionsMenu
             android:id="@+id/my_calander_multiple_actions"
+>>>>>>> jihun
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -40,6 +75,21 @@
                 android:layout_height="wrap_content"
                 app:fab_icon="@drawable/ic_chat" />
 
+<<<<<<< HEAD
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+=======
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/group_calander"
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:mcv_selectionColor="#a9dbf0cb"
+            app:mcv_showOtherDates="defaults"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+>>>>>>> dong
+=======
             <com.getbase.floatingactionbutton.FloatingActionButton
                 android:id="@+id/add_vote"
                 android:layout_width="wrap_content"
@@ -54,6 +104,7 @@
 
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
+>>>>>>> jihun
 
     </RelativeLayout>
 
@@ -71,4 +122,8 @@
         app:headerLayout="@layout/nav_header_second"
         app:menu="@menu/activity_second_drawer" />
 
+<<<<<<< HEAD
 </android.support.v4.widget.DrawerLayout>
+=======
+</android.support.v4.widget.DrawerLayout>
+>>>>>>> jihun

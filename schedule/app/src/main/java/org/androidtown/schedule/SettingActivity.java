@@ -1,9 +1,13 @@
 package org.androidtown.schedule;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
+<<<<<<< HEAD
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+=======
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -11,25 +15,43 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+>>>>>>> jihun
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+<<<<<<< HEAD
+=======
 import com.google.firebase.auth.FirebaseUser;
+>>>>>>> jihun
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
 
+<<<<<<< HEAD
+public class SettingActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
+=======
 public class SettingActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
+>>>>>>> jihun
 
     private String uid;
     private EditText groupId_text;
@@ -38,6 +60,7 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private int year, month, day, hour, minute;
     private DatePickerDialog datePickerDialog;
     private AlertDialog.Builder buider;
@@ -50,13 +73,19 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
     private FirebaseUser user;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+<<<<<<< HEAD
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
+=======
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+>>>>>>> jihun
 
         Intent intent = getIntent();
         uid = intent.getStringExtra("uid");
@@ -86,6 +115,14 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
+<<<<<<< HEAD
+            public void onClick(View view)
+            {
+                //  datePickerDialog = new DatePickerDialog(SettingActivity.this, SettingActivity.this, 2013, 10, 23);
+                // datePickerDialog.show();
+                datePickerDialog = new DatePickerDialog(SettingActivity.this,listener,2017,6,12);
+                datePickerDialog.show();
+=======
             public void onClick(View view) {
                 saveUserInformation();
             }
@@ -94,6 +131,7 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+>>>>>>> jihun
 
             }
         });
@@ -106,6 +144,8 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+<<<<<<< HEAD
+=======
     }
 
     private void saveUserInformation(){
@@ -120,6 +160,7 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
         databaseReference.child("Users").child(user.getUid()).setValue(userInformation);
 
         Toast.makeText(this, "정보 저장완료", Toast.LENGTH_LONG).show();
+>>>>>>> jihun
     }
 
     private DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
@@ -162,8 +203,13 @@ public class SettingActivity extends AppCompatActivity implements NavigationView
                     toast2.show();
 
                     Schedule schedule = new Schedule(year,month, day, hour, minute ,shedule_title,shedule_body,"dssd","dsf" );
+<<<<<<< HEAD
+                    //  Schedule(int year, int mounth, int day, int hour, int minute, String title, String body)
+                    databaseReference.child("Users").child(id).child("schedule").child(shedule_body).setValue(schedule);
+=======
                   //  Schedule(int year, int mounth, int day, int hour, int minute, String title, String body)
                     databaseReference.child("Users").child(uid).child("schedule").child(shedule_body).setValue(schedule);
+>>>>>>> jihun
 
                 }
             });

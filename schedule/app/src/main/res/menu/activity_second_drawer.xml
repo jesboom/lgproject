@@ -27,9 +27,15 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/share" />
             <item
+<<<<<<< HEAD
+            android:id="@+id/nav_informatiom"
+            android:icon="@mipmap/ic_information"
+            android:title="@string/information" />
+=======
                 android:id="@+id/nav_informatiom"
                 android:icon="@mipmap/ic_information"
                 android:title="@string/information" />
+>>>>>>> jihun
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@mipmap/ic_logout"
@@ -37,4 +43,8 @@
         </menu>
     </item>
 
+<<<<<<< HEAD
 </menu>
+=======
+</menu>
+>>>>>>> jihun

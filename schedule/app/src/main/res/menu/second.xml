@@ -14,4 +14,8 @@
         android:layout_weight="1"
         android:text="logout_button" />
 
+<<<<<<< HEAD
 </menu>
+=======
+</menu>
+>>>>>>> jihun
